@@ -43,6 +43,7 @@ const Provider = defineComponent({
   },
 });
 
+// 必须mount，否则挂载不上
 createApp(Provider).mount(hostElem);
 
 export default bus;

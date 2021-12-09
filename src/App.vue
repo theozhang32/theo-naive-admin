@@ -1,19 +1,12 @@
-<script lang="ts">
-  import { defineComponent } from '@vue/runtime-core';
+<script setup lang="ts">
   import { AppProvider } from '@/components/AppProvider';
-
-  export default defineComponent({
-    components: {
-      AppProvider: [AppProvider.name],
-    },
-  });
 </script>
 
 <template>
   <n-config-provider>
-    <app-provider>
-      <n-button>Click Me</n-button>
-    </app-provider>
+    <AppProvider>
+      <router-view></router-view>
+    </AppProvider>
   </n-config-provider>
 </template>
 

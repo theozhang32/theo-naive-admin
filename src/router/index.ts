@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes';
+import { createRouterGuards } from './guards';
 
 const router = createRouter({
   strict: true,
@@ -13,5 +14,6 @@ const router = createRouter({
 });
 
 export function setupRouter(app: App) {
+  createRouterGuards(router);
   app.use(router);
 }

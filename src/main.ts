@@ -1,6 +1,11 @@
+import './styles/tailwind.css';
 import { createApp } from 'vue';
 import App from './App.vue';
-import './styles/tailwind.css';
 import bus from '@/utils/bus';
+import { setupRouter } from '@/router';
 
-createApp(App).mount('#app');
+const app = createApp(App);
+
+setupRouter(app);
+
+app.mount('#app');
