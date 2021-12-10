@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider class="h-full">
     <AppProvider>
       <router-view></router-view>
     </AppProvider>
@@ -11,12 +11,16 @@
 </template>
 
 <style>
+  html,
+  body,
+  #app {
+    height: 100%;
+    overflow: hidden;
+  }
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
 </style>

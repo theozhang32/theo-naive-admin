@@ -1,12 +1,12 @@
 import type { RouteRecordRaw } from 'vue-router';
-import ContainerLayout from '@/layout/ContainerLayout.vue';
+import BasicLayout from '@/layout/index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/table',
     name: 'TableExample',
     redirect: '/table/basic',
-    component: ContainerLayout,
+    component: BasicLayout,
     children: [
       {
         path: 'basic',
@@ -20,4 +20,4 @@ const routes: RouteRecordRaw[] = [
   },
 ];
 
-export default routes
+export default routes;

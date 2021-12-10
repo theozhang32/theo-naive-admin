@@ -4,8 +4,11 @@ import App from './App.vue';
 import bus from '@/utils/bus';
 import { setupRouter } from '@/router';
 
-const app = createApp(App);
+async function bootstrap() {
+  const app = createApp(App);
 
-setupRouter(app);
+  await setupRouter(app);
+  app.mount('#app');
+}
 
-app.mount('#app');
+bootstrap();

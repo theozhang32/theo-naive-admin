@@ -11,6 +11,7 @@
     "lint:style": "stylelint --fix \"src/**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
   },
   "dependencies": {
+    "lodash-es": "^4.17.21",
     "naive-ui": "^2.21.5",
     "vue": "^3.2.16",
     "vue-router": "4"

@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes';
 import { createRouterGuards } from './guards';
 
-const router = createRouter({
+export const router = createRouter({
   strict: true,
   history: createWebHashHistory(),
   routes,
