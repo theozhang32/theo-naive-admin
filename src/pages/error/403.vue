@@ -2,7 +2,7 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    name: 'PageError403',
+    name: 'Forbidden',
     setup() {},
   });
 </script>

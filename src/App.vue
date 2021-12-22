@@ -1,5 +1,13 @@
 <script setup lang="ts">
+  import { isReactive, toRaw, unref, watchEffect } from 'vue';
   import { AppProvider } from '@/components/AppProvider';
+  import { useRoute } from 'vue-router';
+
+  const route = useRoute();
+
+  watchEffect(() => {
+    console.log(route.path);
+  });
 </script>
 
 <template>

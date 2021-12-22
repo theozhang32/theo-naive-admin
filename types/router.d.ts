@@ -1,10 +1,9 @@
 import 'vue-router';
 
 declare module 'vue-router' {
-  type Permission = string[];
   interface RouteMeta {
     title: string;
-    auth?: boolean;
+    menu?: string;
     permission?: Permission;
     keepAlive?: boolean;
   }

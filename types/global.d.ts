@@ -1,5 +1,7 @@
 declare type Recordable<T = any> = Record<string, T>;
 
+declare type Permission = string[];
+
 // declare module 'vue' {
 //   export type JSXComponent<Props = any> =
 //     | { new (): ComponentPublicInstance<Props> }

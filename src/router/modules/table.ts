@@ -1,19 +1,29 @@
 import type { RouteRecordRaw } from 'vue-router';
 import BasicLayout from '@/layout/index.vue';
+import { name as projectName } from '../../../package.json';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/table',
-    name: 'TableExample',
-    redirect: '/table/basic',
+    redirect: '/table/simple',
     component: BasicLayout,
     children: [
       {
-        path: 'basic',
-        name: 'BasicTableExample',
-        component: () => import('@/pages/table/basic.vue'),
+        path: 'simple',
+        name: 'SimpleTableExample',
+        component: () => import('@/pages/table/simple.vue'),
         meta: {
-          title: '基础列表',
+          title: '展示表格',
+          menu: `${projectName}.table.SimpleTableExample`,
+        },
+      },
+      {
+        path: 'data',
+        name: 'DataTableExample',
+        component: () => import('@/pages/table/data.vue'),
+        meta: {
+          title: '数据表格',
+          menu: `${projectName}.table.DataTableExample`,
         },
       },
     ],

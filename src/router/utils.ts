@@ -1,41 +1,52 @@
-import type { RouteRecordRaw, Permission } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 import { intersection } from 'lodash-es';
+import type { IMenu } from './types';
 
-const modules = import.meta.globEager('./modules/**/*.ts');
-
-const routeModuleList: RouteRecordRaw[] = [];
-
-Object.keys(modules).forEach((key) => {
-  const mod = modules[key].default || {};
-  const modList = Array.isArray(mod) ? [...mod] : [mod];
-  routeModuleList.push(...modList);
-});
+interface RouteRecordRawLike {
+  meta: {
+    permisson?: Permission;
+    [key: string]: any;
+  };
+  [key: string]: any;
+}
 
 export const routeHasPermission = (route: RouteRecordRaw, userPermission: Permission) => {
   if (!route.meta) {
     return false;
   } else {
-    if (!route.meta.permission) {
-      return true;
-    } else {
-      return intersection(route.meta.permission, userPermission).length > 0;
-    }
+    return checkPermission(route as RouteRecordRawLike, userPermission);
+  }
+};
+
+export const menuHasPermission = (menu: IMenu, userPermission: Permission) => {
+  if (!menu.meta.permission) {
+    return true;
+  } else {
+    return checkPermission(menu, userPermission);
   }
 };
 
 export function generateTree<T extends { children?: Array<T> }>(
   tree: T[],
   permission: Permission,
-  filter: (t: T, p: Permission) => boolean
+  filter: (tnode: T, p: Permission) => boolean
 ): T[] {
   return tree
-    .filter((t) => t.children || (!t.children && filter(t, permission)))
-    .map((t) => {
-      const _t: T = { ...t };
-      if (_t.children) {
-        _t.children = generateTree(_t.children, permission, filter);
+    .filter((tnode) => tnode.children || (!tnode.children && filter(tnode, permission)))
+    .map((tnode) => {
+      const node: T = { ...tnode };
+      if (node.children) {
+        node.children = generateTree(node.children, permission, filter);
       }
-      return _t;
+      return node;
     })
-    .filter((t) => !t.children || (t.children && t.children.length > 0));
+    .filter((tnode) => !tnode.children || (tnode.children && tnode.children.length > 0));
+}
+
+function checkPermission(target: RouteRecordRawLike, permisison: Permission) {
+  if (!target.meta.permission) {
+    return true;
+  } else {
+    return intersection(target.meta.permission, permisison).length > 0;
+  }
 }

@@ -1,13 +1,17 @@
 import './styles/tailwind.css';
 import { createApp } from 'vue';
 import App from './App.vue';
-import bus from '@/utils/bus';
+import { setupStore, setupUser } from '@/store';
 import { setupRouter } from '@/router';
 
 async function bootstrap() {
   const app = createApp(App);
 
-  await setupRouter(app);
+  setupStore(app);
+
+  await setupUser();
+
+  setupRouter(app);
   app.mount('#app');
 }
 

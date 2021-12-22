@@ -9,6 +9,9 @@
   import { AppMenu } from './components/AppMenu';
   import { AppHeader } from './components/AppHeader';
   import { AppTabView } from './components/AppTabView';
+  import { useLayoutStore } from '@/store';
+
+  const layoutStore = useLayoutStore();
 </script>
 
 <template>
@@ -19,9 +22,20 @@
       show-trigger="bar"
       collapsed-mode="width"
       bordered
+      :collapsed="layoutStore.appSiderCollapsed"
       :collapsed-width="64"
       :width="208"
       :native-scrollbar="false"
+      @collapse="
+        () => {
+          layoutStore.appSiderCollapsed = true;
+        }
+      "
+      @expand="
+        () => {
+          layoutStore.appSiderCollapsed = false;
+        }
+      "
     >
       <AppLogo />
       <AppMenu />
