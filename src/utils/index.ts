@@ -25,5 +25,5 @@ export function renderIcon(
     {}
   >
 ) {
-  return h(NIcon, null, { default: () => h(icon) });
+  return () => h(NIcon, null, { default: () => h(icon) });
 }

@@ -20,7 +20,7 @@
       class="h-full"
       content-style="display: flex; flex-direction: column; height: 100%;"
       show-trigger="bar"
-      collapsed-mode="width"
+      collapse-mode="width"
       bordered
       :collapsed="layoutStore.appSiderCollapsed"
       :collapsed-width="64"

@@ -1,18 +1,31 @@
 <script lang="ts">
-  import { ref, watchEffect } from 'vue';
-  import { useLayoutStore } from '@/store';
-  import { useRoute } from 'vue-router';
   export default {
     name: 'AppMenu',
   };
 </script>
 
 <script setup lang="ts">
+  import type { MenuOption } from 'naive-ui';
+  import { h, resolveComponent, ref, watchEffect } from 'vue';
+  import { useLayoutStore } from '@/store';
+  import { useRoute } from 'vue-router';
+
   const route = useRoute();
   const layoutStore = useLayoutStore();
   const activeKey = ref<string | null>(null);
+  const menus = layoutStore.dynamicMenus as MenuOption[];
 
-  console.log(layoutStore.formatMenus);
+  // 批量渲染菜单
+  const renderMenuLabel = (option: MenuOption) => {
+    if (typeof option.path === 'string' && option.path) {
+      return h(
+        resolveComponent('router-link'),
+        { to: { path: option.path } },
+        () => option.label as string
+      );
+    }
+    return option.label as string;
+  };
 
   watchEffect(() => {
     const route2menu = route.meta.menu;
@@ -30,9 +43,10 @@
       v-model:value="activeKey"
       :collapsed="layoutStore.appSiderCollapsed"
       :collapsed-width="64"
-      :icon-size="20"
       :expand-icon-size="24"
-      :options="layoutStore.formatMenus"
+      :indent="24"
+      :options="menus"
+      :render-label="renderMenuLabel"
     />
   </div>
 </template>

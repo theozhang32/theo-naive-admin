@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { intersection } from 'lodash-es';
-import type { IMenu } from './types';
+import type { IMenu } from '@/types';
 
 interface RouteRecordRawLike {
   meta: {

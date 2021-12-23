@@ -1,5 +1,5 @@
 {
-  "name": "naiveui-admin",
+  "name": "theo-naive-admin",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --mode dev",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@vicons/antd": "^0.11.0",
-    "@vicons/ionicons5": "^0.11.0",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.23.1",
     "pinia": "^2.0.8",
