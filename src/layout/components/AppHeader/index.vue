@@ -14,25 +14,24 @@
   } from '@vicons/antd';
   import { HeaderIcon } from './HeaderIcon';
   import { HeaderAvatar } from './Avatar';
+  import { HeaderBreadcrumb } from './Breadcrumb';
 </script>
 
 <template>
   <div class="h-16 px-3 flex items-center shadow">
-    <HeaderIcon>
-      <ArrowLeftOutlined />
-    </HeaderIcon>
-    <HeaderIcon class="ml-3">
+    <HeaderIcon tooltip="返回"><ArrowLeftOutlined /></HeaderIcon>
+    <HeaderIcon inner-class="ml-3" tooltip="刷新">
       <ReloadOutlined />
     </HeaderIcon>
-    <div></div>
+    <HeaderBreadcrumb class="ml-3" />
     <div class="flex-1 flex items-center justify-end">
-      <HeaderIcon>
+      <HeaderIcon tooltip="搜索">
         <SearchOutlined />
       </HeaderIcon>
-      <HeaderIcon class="ml-4">
+      <HeaderIcon inner-class="ml-4" tooltip="锁屏">
         <LockOutlined />
       </HeaderIcon>
-      <HeaderIcon class="ml-4">
+      <HeaderIcon inner-class="ml-4" tooltip="全屏">
         <FullscreenOutlined />
       </HeaderIcon>
       <HeaderAvatar class="ml-4" />

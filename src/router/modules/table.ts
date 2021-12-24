@@ -7,6 +7,9 @@ const routes: RouteRecordRaw[] = [
     path: '/table',
     redirect: '/table/simple',
     component: BasicLayout,
+    meta: {
+      title: '表格示例',
+    },
     children: [
       {
         path: 'simple',
