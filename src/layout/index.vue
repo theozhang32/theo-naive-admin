@@ -5,6 +5,7 @@
 </script>
 
 <script setup lang="ts">
+  import { onMounted } from 'vue';
   import { AppLogo } from './components/AppLogo';
   import { AppMenu } from './components/AppMenu';
   import { AppHeader } from './components/AppHeader';

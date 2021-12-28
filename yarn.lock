@@ -560,11 +560,6 @@
   resolved "https://registry.npmmirror.com/@vicons/antd/download/@vicons/antd-0.11.0.tgz#3d28952d028aed712dca61cb81dbdb11454c5542"
   integrity sha1-PSiVLQKK7XEtymHLgdvbEUVMVUI=
 
-"@vicons/ionicons5@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.npmmirror.com/@vicons/ionicons5/download/@vicons/ionicons5-0.11.0.tgz#54185bfa572a09df70094db1954f28bfbf1363ed"
-  integrity sha1-VBhb+lcqCd9wCU2xlU8ov78TY+0=
-
 "@vitejs/plugin-vue-jsx@^1.3.0":
   version "1.3.0"
   resolved "https://registry.npmmirror.com/@vitejs/plugin-vue-jsx/download/@vitejs/plugin-vue-jsx-1.3.0.tgz#3c91cfc2dbf7fee149794dac884e94288c9aa485"
@@ -3375,6 +3370,11 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
+sortablejs@1.14.0:
+  version "1.14.0"
+  resolved "https://registry.npmmirror.com/sortablejs/download/sortablejs-1.14.0.tgz#6d2e17ccbdb25f464734df621d4f35d4ab35b3d8"
+  integrity sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w==
+
 source-map-js@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmmirror.com/source-map-js/download/source-map-js-1.0.1.tgz#a1741c131e3c77d048252adfa24e23b908670caf"
@@ -4085,6 +4085,13 @@ vue@^3.2.16:
     "@vue/runtime-dom" "3.2.23"
     "@vue/server-renderer" "3.2.23"
     "@vue/shared" "3.2.23"
+
+vuedraggable@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmmirror.com/vuedraggable/download/vuedraggable-4.1.0.tgz#edece68adb8a4d9e06accff9dfc9040e66852270"
+  integrity sha1-7ezmituKTZ4GrM/538kEDmaFInA=
+  dependencies:
+    sortablejs "1.14.0"
 
 vueuc@^0.4.18:
   version "0.4.18"

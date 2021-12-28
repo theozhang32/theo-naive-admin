@@ -1,6 +1,6 @@
-import type { Router, RouteLocationNormalized } from 'vue-router';
+import type { Router, RouteLocationNormalized, ConfirmedRoute } from 'vue-router';
 import { isNavigationFailure } from 'vue-router';
-import { pick, omitBy, isUndefined } from 'lodash-es';
+import { pick, omitBy, isUndefined, isEqual } from 'lodash-es';
 import { useUserStore, useLayoutStore } from '@/store';
 import bus from '@/utils/bus';
 import { constantRoutes } from './constantRoutes';
@@ -9,6 +9,7 @@ const constantRoutesName = constantRoutes.filter((route) => route.name).map((rou
 
 export function createRouterGuards(router: Router) {
   router.beforeEach((to, from) => {
+    bus.$loadingBar.start();
     const userStore = useUserStore();
 
     if (to.name && constantRoutesName.includes(to.name)) {
@@ -16,13 +17,7 @@ export function createRouterGuards(router: Router) {
     }
     if (!userStore.isLogin) {
       // 未登录：携带target地址跳转登录
-      const next: {
-        path?: string;
-        name?: string;
-        params?: Recordable<any>;
-        query?: Recordable<any>;
-        hash?: string;
-      } = omitBy(pick(to, ['path', 'name', 'params', 'query', 'hash']), isUndefined);
+      const next = omitBy(pick(to, ['path', 'name', 'params', 'query', 'hash']), isUndefined);
       return {
         name: 'Login',
         replace: true,
@@ -42,6 +37,7 @@ export function createRouterGuards(router: Router) {
     if (isNavigationFailure(failure)) {
       console.warn(failure);
     }
+    addRouteRecord(to);
     toggleKeepAliveComponents(to);
   });
 
@@ -65,6 +61,19 @@ function toggleKeepAliveComponents(to: RouteLocationNormalized) {
     } else if (!to.meta?.keepAlive) {
       const index = keepAliveComponents.findIndex((name) => name === currentCompName);
       index > -1 && keepAliveComponents.splice(index, 1);
+    }
+  });
+}
+
+function addRouteRecord(to: RouteLocationNormalized) {
+  const layoutStore = useLayoutStore();
+  layoutStore.$patch((state) => {
+    const readyToAdd = omitBy(
+      pick(to, ['path', 'name', 'params', 'query', 'hash', 'meta']),
+      isUndefined
+    );
+    if (state.routeRecord.findIndex((r) => isEqual(r, readyToAdd)) < 0) {
+      state.routeRecord.push(readyToAdd);
     }
   });
 }

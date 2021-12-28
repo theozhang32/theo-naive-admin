@@ -1,19 +1,25 @@
 <script setup lang="ts">
   import { isReactive, toRaw, unref, watchEffect } from 'vue';
-  import { AppProvider } from '@/components/AppProvider';
   import { useRoute } from 'vue-router';
+  import { AppProvider } from '@/components/AppProvider';
+  import { useLayoutStore } from '@/store';
+  import { useReload } from '@/hooks';
+  import bus from '@/utils/bus';
 
   const route = useRoute();
+  const layoutStore = useLayoutStore();
+
+  useReload();
 
   watchEffect(() => {
-    console.log(route.path);
+    console.log(layoutStore.routeRecord);
   });
 </script>
 
 <template>
   <n-config-provider class="h-full">
     <AppProvider>
-      <router-view></router-view>
+      <router-view :key="layoutStore.routeViewKey"></router-view>
     </AppProvider>
   </n-config-provider>
 </template>

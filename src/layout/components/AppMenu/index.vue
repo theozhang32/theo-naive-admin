@@ -17,7 +17,7 @@
 
   // 批量渲染菜单
   const renderMenuLabel = (option: MenuOption) => {
-    if (typeof option.path === 'string' && option.path) {
+    if (typeof option.path === 'string' && option.path && option.path !== route.path) {
       return h(
         resolveComponent('router-link'),
         { to: { path: option.path } },
