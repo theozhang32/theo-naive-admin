@@ -1,5 +1,6 @@
 import type { MenuOptionSharedPart } from 'naive-ui/lib/menu/src/interface';
 import type { VNode, VNodeChild } from 'vue';
+import type { RouteLocationNormalized } from 'vue-router';
 
 export type MenuOption = MenuOptionSharedPart & {
   label?: string | (() => VNodeChild);
@@ -15,3 +16,8 @@ export interface IMenu extends MenuOption {
   path?: string; // 指向router path
   children?: IMenu[];
 }
+
+export type RouteLocationWithMeta = Pick<
+  RouteLocationNormalized,
+  'path' | 'hash' | 'name' | 'params' | 'query' | 'meta'
+>;

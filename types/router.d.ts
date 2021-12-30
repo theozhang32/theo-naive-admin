@@ -9,12 +9,4 @@ declare module 'vue-router' {
     permission?: Permission;
     keepAlive?: boolean;
   }
-  interface ConfirmedRoute {
-    path?: string;
-    query?: LocationQuery;
-    hash?: string;
-    name?: RouteRecordName;
-    params?: RouteParams;
-    meta: RouteMeta;
-  }
 }

@@ -1,6 +1,6 @@
-import type { Router, RouteLocationNormalized, ConfirmedRoute } from 'vue-router';
+import type { Router, RouteLocationNormalized } from 'vue-router';
 import { isNavigationFailure } from 'vue-router';
-import { pick, omitBy, isUndefined, isEqual } from 'lodash-es';
+import { pick, isEqual } from 'lodash-es';
 import { useUserStore, useLayoutStore } from '@/store';
 import bus from '@/utils/bus';
 import { constantRoutes } from './constantRoutes';
@@ -17,7 +17,7 @@ export function createRouterGuards(router: Router) {
     }
     if (!userStore.isLogin) {
       // 未登录：携带target地址跳转登录
-      const next = omitBy(pick(to, ['path', 'name', 'params', 'query', 'hash']), isUndefined);
+      const next = pick(to, ['path', 'name', 'params', 'query', 'hash']);
       return {
         name: 'Login',
         replace: true,
@@ -68,10 +68,7 @@ function toggleKeepAliveComponents(to: RouteLocationNormalized) {
 function addRouteRecord(to: RouteLocationNormalized) {
   const layoutStore = useLayoutStore();
   layoutStore.$patch((state) => {
-    const readyToAdd = omitBy(
-      pick(to, ['path', 'name', 'params', 'query', 'hash', 'meta']),
-      isUndefined
-    );
+    const readyToAdd = pick(to, ['path', 'name', 'params', 'query', 'hash', 'meta']);
     if (state.routeRecord.findIndex((r) => isEqual(r, readyToAdd)) < 0) {
       state.routeRecord.push(readyToAdd);
     }

@@ -1,12 +1,12 @@
-import type { RouteRecordName, RouteRecordRaw, RouteLocationRaw } from 'vue-router';
+import type { RouteRecordName, RouteRecordRaw, RouteLocationRaw, RouteMeta } from 'vue-router';
 import { defineStore } from 'pinia';
-import { IMenu } from '@/types';
+import { IMenu, RouteLocationWithMeta } from '@/types';
 
 export interface ILayoutStoreState {
   keepAliveComponents: RouteRecordName[];
   dynamicRoutes: RouteRecordRaw[];
   dynamicMenus: IMenu[];
-  routeRecord: RouteLocationRaw[];
+  routeRecord: RouteLocationWithMeta[];
   appSiderCollapsed: boolean;
   isFullScreen: boolean;
   routeViewKey: number;

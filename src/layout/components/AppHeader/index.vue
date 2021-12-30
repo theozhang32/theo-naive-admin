@@ -43,21 +43,21 @@
 
 <template>
   <div class="h-16 px-3 flex items-center shadow">
-    <HeaderIcon
-      tooltip="返回上一页"
-      @click="
-        () => {
-          router.back();
-        }
-      "
-      ><ArrowLeftOutlined
-    /></HeaderIcon>
-    <HeaderIcon inner-class="ml-3" tooltip="刷新" @click="onReload">
-      <ReloadOutlined />
-    </HeaderIcon>
-    <HeaderBreadcrumb class="ml-3" />
+    <HeaderBreadcrumb />
     <div class="flex-1 flex items-center justify-end">
-      <HeaderIcon tooltip="搜索">
+      <HeaderIcon
+        tooltip="返回上一页"
+        @click="
+          () => {
+            router.back();
+          }
+        "
+        ><ArrowLeftOutlined
+      /></HeaderIcon>
+      <HeaderIcon inner-class="ml-4" tooltip="刷新" @click="onReload">
+        <ReloadOutlined />
+      </HeaderIcon>
+      <HeaderIcon inner-class="ml-4" tooltip="搜索">
         <SearchOutlined />
       </HeaderIcon>
       <HeaderIcon inner-class="ml-4" tooltip="锁屏">

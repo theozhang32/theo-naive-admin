@@ -46,7 +46,7 @@
         <AppHeader />
         <AppTabView />
       </n-layout-header>
-      <n-layout-content :native-scrollbar="false" class="h-full pt-24">
+      <n-layout-content :native-scrollbar="false" class="h-full pt-28">
         <router-view />
       </n-layout-content>
     </n-layout>

@@ -24,6 +24,9 @@ declare module 'vue' {
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NSpace: typeof import('naive-ui')['NSpace']
+    NTab: typeof import('naive-ui')['NTab']
+    NTabs: typeof import('naive-ui')['NTabs']
+    NTag: typeof import('naive-ui')['NTag']
     NTooltip: typeof import('naive-ui')['NTooltip']
     Reload: typeof import('./src/components/Reload/index.vue')['default']
   }
